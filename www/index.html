@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="coelhinho.svg" type="image/svg+xml"><title>Toca do Respiro</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#fff6ef;color:#502f31;font:16px "Nunito","Segoe UI",sans-serif}header,main,footer{width:min(1080px,90%);margin:auto}header{display:flex;justify-content:space-between;align-items:center;padding:24px 0;border-bottom:1px solid #ebd5ce}strong{font: bold 24px Georgia}header a,footer a{color:inherit}main{text-align:center;padding:35px 0 20px}h1{font:clamp(33px,5vw,56px) Georgia;margin:0}p{color:#705051}.scene{position:relative;isolation:isolate;overflow:hidden;height:clamp(235px,36vh,360px);background:linear-gradient(#f6c7ce,#ffe3c6);border-radius:34px;margin:25px auto}.sun{position:absolute;left:12%;top:14%;width:clamp(86px,12vw,124px);aspect-ratio:1;border-radius:50%;background:linear-gradient(155deg,#fff3cd 12%,#ffdd9f 85%);box-shadow:0 0 30px 8px rgba(255,224,165,.42)}.hill{position:absolute;bottom:-47%;width:90%;height:100%;border-radius:50%;background:#efb6a6;left:-18%;transform:rotate(8deg)}.far{left:38%;background:#da98a0;bottom:-43%;transform:rotate(-9deg)}.grass{position:absolute;bottom:6%;color:#945752;letter-spacing:9px;font-size:25px;left:7%}.right{left:auto;right:7%}.rabbit{position:absolute;isolation:isolate;bottom:10%;left:50%;width:136px;height:130px;margin-left:-68px;background:#fff9eb;border:2px solid #886560;border-radius:47% 47% 43% 43%;transform-origin:bottom center;box-shadow:inset -9px -7px #f1e7d5,0 9px 0 #96575344}.ear{position:absolute;z-index:0;width:33px;height:84px;top:-60px;left:22px;border:2px solid #886560;border-radius:60%;background:#fff9eb;transform:rotate(-13deg)}.rabbit:before{content:"";position:absolute;inset:-2px;border:inherit;border-radius:inherit;background:inherit;box-shadow:inset -9px -7px #f1e7d5;z-index:1}.eye,.nose,.cheek,.paw{z-index:2}.ear:after{content:"";position:absolute;inset:12px 8px;background:#edc5b9;border-radius:60%}.ear.r{left:78px;transform:rotate(13deg)}.eye{position:absolute;top:44px;left:32px;width:18px;height:14px}
+.eye.r{left:82px}
+.eye:before,.eye:after{content:"";position:absolute}
+.eye:before{inset:0 4px;border-radius:50%;background:radial-gradient(circle at 35% 26%,#fff9eb 1.4px,transparent 2px),#605347;transform-origin:center 75%;transform:scaleY(.08);opacity:0}
+.eye:after{inset:0 0 2px;border-bottom:3px solid #605347;border-radius:50%;opacity:1}
+.rabbit.awake .eye:before{transform:scaleY(1);opacity:1}
+.rabbit.awake .eye:after{opacity:0}
+@media(prefers-reduced-motion:no-preference){
+ .eye:before{transition:transform 620ms ease-in-out,opacity 300ms ease-in 260ms}
+ .eye:after{transition:opacity 320ms ease-in-out 220ms}
+ .rabbit.awake .eye:before{transition-delay:0s}
+ .rabbit.awake .eye:after{transition-delay:0s}
+}.nose{position:absolute;top:58px;left:61px;color:#996e60;font:14px Georgia}.cheek{position:absolute;top:58px;left:18px;background:#f2cec3;border-radius:50%;width:20px;height:10px;box-shadow:77px 0 #f2cec3}.paw{position:absolute;bottom:-2px;left:9px;width:39px;height:23px;background:#fff9eb;border:2px solid #886560;border-radius:60%;transform:rotate(-9deg)}.paw.r{left:84px;transform:rotate(9deg)}h2{font:34px Georgia;margin:10px 0}button{background:#984836;color:white;border:0;border-radius:32px;padding:15px 32px;font:600 16px inherit;font-family:inherit;font-size:16px;cursor:pointer}footer{text-align:center;font-size:14px;padding-bottom:20px}details{margin:15px auto;max-width:540px}summary{cursor:pointer}
+#pace{display:block;width:min(300px,90%);height:44px;margin:0 auto;accent-color:#984836;cursor:pointer}#paceValue{display:block;font-weight:600;margin-top:6px}#settings{margin:18px auto}#settings label{display:block;margin-top:14px}.speech{position:absolute;left:calc(50% + 88px);bottom:38%;max-width:290px;margin:0 12px 0 0;padding:14px 20px;background:#fffaf4;border-radius:22px 22px 22px 4px;text-align:left;box-shadow:0 3px 10px #75443d16}
+.speech:after{content:"";position:absolute;left:-12px;bottom:0;border-bottom:13px solid #fffaf4;border-left:16px solid transparent}
+.speech h2{font-size:24px;margin:0}.speech span{display:block;margin-top:4px;font-size:15px}
+@media(max-width:680px){
+ .scene{height:285px}
+ .rabbit{left:29%;bottom:10%}
+ .speech{left:calc(29% + 82px);right:12px;bottom:calc(10% + 66px);width:auto;margin:0;padding:12px 14px}
+}
+@media(max-width:440px){
+ .rabbit{left:23%;scale:.76}
+ .speech{left:calc(23% + 63px);right:8px;bottom:calc(10% + 52px);padding:10px}
+ .speech h2{font-size:20px}.speech span{font-size:14px}
+}@media(prefers-reduced-motion:no-preference){
+ .ear{transform-origin:50% 85%;rotate:calc(var(--breath,0) * -8deg)}.ear.r{rotate:calc(var(--breath,0) * 10deg)}
+ .paw{translate:0 calc(var(--breath,0) * -5px)}
+ .nose{animation:sniff 5s ease-in-out infinite}
+ @keyframes sniff{0%,75%,86%,100%{transform:translateY(0)}80%,91%{transform:translateY(-2px)}}
+}
+.controls{display:flex;align-items:center;justify-content:space-between;gap:16px 32px;flex-wrap:wrap;text-align:left}
+.controls #settings{margin:0;flex:0 1 340px;max-width:100%;display:grid;grid-template-columns:1fr auto;align-items:center;gap:0 10px}
+.controls #settings label{grid-column:1/-1;margin:0}
+.controls #pace{width:100%;min-width:0;margin:0}
+.controls #paceValue{margin:0;font-variant-numeric:tabular-nums}
+@media(max-width:560px){.controls{flex-direction:column;align-items:stretch}.controls #settings{flex:auto}.controls button{align-self:flex-start}}
+.exercise-action{text-align:center;max-width:100%}.exercise-action #hint{margin:0 0 16px}.controls{align-items:flex-end}@media(max-width:560px){.controls{align-items:stretch}.exercise-action{align-self:flex-start}}.countdown{position:absolute;inset:0;z-index:5;display:grid;place-items:center;background:rgba(43,25,32,.69);color:#fff9ef;font:clamp(88px,15vw,148px)/1 Georgia,serif;opacity:0;pointer-events:none}.scene.preparing .countdown{opacity:1}.scene.preparing .speech{visibility:hidden}@media(prefers-reduced-motion:no-preference){.countdown{transition:opacity .2s ease}}.clouds{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.cloud-path{position:absolute;inset:15% 0 auto;height:22px;animation:cloud-drift 76s linear -19s infinite}
+.cloud-path:nth-child(2){top:9%;animation-duration:103s;animation-delay:-70s}
+.cloud-path:nth-child(3){top:27%;animation-duration:128s;animation-delay:-115s}
+.cloud{position:absolute;left:-100px;width:86px;height:22px;border-radius:45px;background:#fff8ef;opacity:.64}
+.cloud:before,.cloud:after{content:"";position:absolute;background:inherit;border-radius:50%}
+.cloud:before{width:37px;height:35px;bottom:4px;left:14px}.cloud:after{width:30px;height:27px;bottom:5px;right:11px}
+.cloud-path:nth-child(2) .cloud{scale:.74;opacity:.52}.cloud-path:nth-child(3) .cloud{scale:.58;opacity:.42}
+@keyframes cloud-drift{from{transform:translateX(0)}to{transform:translateX(calc(100% + 110px))}}
+@media(prefers-reduced-motion:reduce){.cloud-path{animation-play-state:paused}}header nav{display:flex;align-items:center;gap:18px}
+#nightToggle{background:transparent;color:inherit;border:1px solid #ba9386;padding:9px 14px;font-size:14px}
+.burrow{position:absolute;bottom:4%;left:50%;width:178px;height:158px;transform:translateX(-50%);border-radius:56% 54% 27% 25%;background:radial-gradient(ellipse at 50% 90%,#483740,#231f30 76%);border:9px solid #806776;box-shadow:0 -4px 0 #aa8790,0 6px 0 #584653;opacity:0}
+html.night{color-scheme:dark}
+.night body{background:#201e2b;color:#f4e7df}
+.night header{border-color:#514251}
+.night p{color:#d8c6c9}
+.scene:before{content:"";position:absolute;inset:0;background:linear-gradient(#272945,#60506b);opacity:0}
+.night .scene:before{opacity:1}
+.night .sun{opacity:0;transform:translate(-20%,145%)}
+.night .moon{opacity:1;transform:translateY(0)}
+.moon{position:absolute;right:clamp(84px,14%,155px);top:7%;width:clamp(104px,14vw,148px);aspect-ratio:1;border-radius:50%;opacity:0;transform:translateY(95%);background:radial-gradient(circle at 34% 38%,#d8ccbc 0 5%,transparent 6%),radial-gradient(circle at 66% 65%,#ded1c0 0 8%,transparent 9%),linear-gradient(135deg,#fff4d8,#ddd1c1);box-shadow:0 0 28px #fff0c333}
+.night .clouds{opacity:.32}
+.night .hill{background:#584958}.night .far{background:#463c50}.night .grass{color:#ab93a3}
+.night .burrow{opacity:1}
+.night .rabbit{translate:0 9%;scale:.79}
+.night .speech{--bubble:#e2cbd8;color:#362738;background:var(--bubble);box-shadow:0 4px 14px #211b2d40}.night .speech:after{border-bottom-color:var(--bubble)}
+.night #toggle{background:#e6b5a2;color:#34222c}.night #pace{accent-color:#e6b5a2}
+@media(prefers-reduced-motion:no-preference){.rabbit{transition:translate .8s ease,scale .8s ease}.burrow{transition:opacity .6s ease}}
+@media(max-width:680px){.burrow{left:29%}}
+@media(max-width:440px){header{flex-wrap:wrap;gap:10px}header nav{gap:12px}.burrow{left:23%;width:132px;height:129px}.night .rabbit{scale:.61}}@media(prefers-reduced-motion:no-preference){
+ .scene.arriving{animation:scene-arrives 1s ease-out both}
+ .arriving .ear{animation:ear-greeting 1.25s ease-in-out both;--greeting-angle:-14deg}
+ .arriving .ear.r{--greeting-angle:14deg}
+ @keyframes scene-arrives{from{opacity:.35}to{opacity:1}}
+ @keyframes ear-greeting{0%,20%{rotate:var(--greeting-angle)}75%{rotate:0deg}87%{rotate:calc(var(--greeting-angle) * .15)}100%{rotate:0deg}}
+}@media(prefers-reduced-motion:no-preference){
+ .opening main>h1,.opening main>h1+p,.opening .controls,.opening footer{
+  animation:info-arrives .55s ease-out backwards;
+ }
+ .opening main>h1+p{animation-delay:.1s}
+ .opening .controls{animation-delay:.24s}
+ .opening footer{animation-delay:.35s}
+ @keyframes info-arrives{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+}.phase-meter{position:absolute;top:10px;right:12px;padding:7px 13px 9px;min-width:106px;text-align:left;border-radius:15px;background:#fff8ef;color:#502f31;box-shadow:0 2px 8px #502f3124;font-size:14px;font-variant-numeric:tabular-nums}
+.phase-meter b{font:600 26px/1.1 "Segoe UI",sans-serif}.phase-meter progress{display:block;width:100%;height:5px;margin-top:4px;accent-color:#984836}
+.night .phase-meter{background:#403747;color:#fff3e8}.night .phase-meter progress{accent-color:#e6b5a2}@media(prefers-reduced-motion:no-preference){
+ .scene:before,.sun,.moon{transition:opacity 1.35s ease-in-out,transform 1.6s ease-in-out}
+ body,.hill,.speech,#toggle{transition:background-color 1.25s ease,color 1s ease}
+ .clouds{transition:opacity 1.35s ease}
+}
+body{position:relative;isolation:isolate;min-height:100vh}
+body:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:url("patinhas.svg") 0 0/170px 142px repeat;opacity:.16}
+.night body:before{opacity:.22}
+.brand,h1,.speech h2{font-family:"Nunito","Arial Rounded MT Bold","Trebuchet MS",sans-serif;font-weight:700;letter-spacing:-.035em}
+.brand{display:inline-flex;align-items:center;gap:10px;font-size:clamp(20px,3vw,26px);line-height:1.15}
+.brand img{width:46px;height:46px;flex:none}
+h1{font-size:clamp(32px,4.7vw,52px);line-height:1.12;text-wrap:balance}
+.speech h2{letter-spacing:-.025em}
+@media(max-width:600px){header{flex-wrap:wrap;gap:10px}.brand img{width:38px;height:38px}}.controls #settings .tick-setting{grid-column:1/-1;grid-row:3;display:flex;align-items:center;gap:6px;cursor:pointer;font-size:14px}.tick-setting input{accent-color:#984836}.controls #settings .tick-setting{position:relative;justify-self:start;margin-top:6px}
+.tick-setting input{position:absolute;width:1px;height:1px;opacity:0}
+.sound-pill{display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 16px;border:1px solid #ba9386;border-radius:32px;color:#704438;background:#fff8f2;font-size:16px;font-weight:600}
+.sound-state{font-size:13px;font-weight:400}.sound-state:after{content:"Desligado"}
+.tick-setting input:checked+.sound-pill{background:#f7dfd3;border-color:#b67965}
+.tick-setting input:checked+.sound-pill .sound-state:after{content:"Ligado"}
+.tick-setting .waves,.tick-setting input:checked+.sound-pill .muted{display:none}
+.tick-setting input:checked+.sound-pill .waves{display:inline}
+.tick-setting input:focus-visible+.sound-pill{outline:3px solid currentColor;outline-offset:3px}
+.night .sound-pill{color:#f7e7df;background:#39313f;border-color:#957d87}
+.night .tick-setting input:checked+.sound-pill{background:#57404a;border-color:#be9693}.exercise-settings{margin:0;width:min(340px,100%);max-width:100%;align-self:flex-start;text-align:right}
+.exercise-settings summary{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 17px;border:1px solid #ba9386;border-radius:32px;background:#fff8f2;color:#704438;font-weight:600;list-style:none}
+.exercise-settings summary::-webkit-details-marker{display:none}
+.exercise-settings summary span{font-size:20px}
+.exercise-settings[open] summary{background:#f7dfd3}
+.controls .exercise-settings #settings{margin-top:10px;padding:14px;text-align:left;border-radius:18px;background:#fff8f2;border:1px solid #ba9386}
+.night .exercise-settings summary,.night .controls .exercise-settings #settings{color:#f7e7df;background:#39313f;border-color:#957d87}
+.night .exercise-settings[open] summary{background:#57404a}
+.controls:has(.exercise-settings){display:grid;grid-template-columns:minmax(0,1fr);justify-content:center;justify-items:center;gap:16px}.controls .exercise-action{justify-self:center}.controls .exercise-settings{width:auto;justify-self:center;text-align:center}.controls .exercise-settings[open]{width:min(340px,90vw)}
+@media(max-width:560px){.exercise-settings{text-align:left}}#toggle{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 26px;border-radius:20px;font-weight:600;min-height:50px}.controls .exercise-action{align-self:center}@media(max-width:600px){header nav{width:100%;justify-content:space-between}}html{scrollbar-width:none}html::-webkit-scrollbar{display:none}.cloud{opacity:.94}.cloud-path:nth-child(2) .cloud{opacity:.86}.cloud-path:nth-child(3) .cloud{opacity:.78}.sun{z-index:0}.clouds{z-index:0}header{flex-wrap:wrap;gap:10px 14px}.brand{flex:1 1 auto}header nav{order:1}.gear{order:2;display:inline-grid;place-items:center;width:46px;height:46px;padding:0;border-radius:50%;background:transparent;color:inherit;border:1px solid #ba9386}.gear:focus-visible,.dialog-close:focus-visible{outline:3px solid currentColor;outline-offset:2px}@media(max-width:600px){header nav{order:3}}.controls{justify-content:center}#settingsDialog{width:min(340px,calc(100% - 32px));border:1px solid #ba9386;border-radius:24px;padding:18px 20px 20px;background:#fff8f2;color:#502f31;box-shadow:0 18px 50px #3b1f2440;text-align:left}#settingsDialog::backdrop{background:rgba(43,25,32,.45)}.dialog-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px}.dialog-head h2{font:700 22px 'Nunito','Segoe UI',sans-serif;margin:0;letter-spacing:-.02em}.dialog-close{width:40px;height:40px;padding:0;border-radius:50%;background:transparent;color:inherit;border:1px solid #ba9386;font-size:16px}#settingsDialog #settings{margin:0;display:grid;gap:4px}#settingsDialog .tick-setting{position:relative;justify-self:start;margin:8px 0 6px;cursor:pointer}#settingsDialog #pace,#settingsDialog #rainVolume{width:100%;margin:4px 0 0;accent-color:#984836}#settingsDialog label[for=rainVolume]{margin-top:12px}.night #settingsDialog #rainVolume{accent-color:#e6b5a2}#settingsDialog #paceValue{margin:0 0 4px}.dialog-done{width:100%;margin-top:16px}.night #settingsDialog{background:#39313f;color:#f7e7df;border-color:#957d87}.night .gear,.night .dialog-close{border-color:#957d87}.night .dialog-done{background:#e6b5a2;color:#34222c}main>h1+p,#hint,.speech span{text-wrap:balance}#nightToggle.gear{order:2;padding:0;border-radius:50%;font-size:0;width:46px;height:46px;display:inline-grid;place-items:center}.night #nightToggle.gear{color:#f3dfa8}#openSettings{order:3}header nav{order:4}@media(min-width:601px){header nav{order:1}}@media(max-width:600px){header nav{justify-content:flex-end}}.mouth{position:absolute;z-index:2;top:75px;left:60px;width:14px;height:10px;border-radius:50%;background:#7a4b45;opacity:0;transform:scale(.25,.3)}.rabbit.breathing .mouth{opacity:1;transform:scale(calc(.25 + var(--mouth,0) * .75),calc(.3 + var(--mouth,0) * .7))}.puff{position:absolute;z-index:3;top:70px;left:54px;width:18px;height:18px;border-radius:50%;background:#fffdf8;border:2px solid #d9b2a6;opacity:0;pointer-events:none}.night .puff{background:#efe4ee;border-color:#b9a3b6}header{flex-wrap:nowrap;justify-content:flex-start}.brand{min-width:0;white-space:nowrap;margin-right:auto}@media(max-width:420px){header{gap:8px}.brand{font-size:19px;gap:8px}.brand img{width:34px;height:34px}.gear,#nightToggle.gear{width:42px;height:42px}}.rain-btn{order:2}.rain-btn[aria-pressed=true]{background:#e3e6f2;border-color:#8d96b8;color:#4b5680}.night .rain-btn[aria-pressed=true]{background:#46506e;border-color:#8d96b8;color:#dfe5ff}.rain-tint{position:absolute;inset:0;background:linear-gradient(#7d8197,#a49cab 70%,transparent);opacity:0;pointer-events:none;mix-blend-mode:multiply}.rain-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0}.raining .rain-tint{opacity:.38}.night.raining .rain-tint{opacity:.3}.raining .rain-canvas{opacity:1}.raining .cloud{background:#d9d4dc;opacity:.92}.night.raining .cloud{background:#8b8597}.raining .sun{opacity:.28}@media(prefers-reduced-motion:no-preference){.rain-tint,.rain-canvas{transition:opacity 1.6s ease}.cloud{transition:background-color 1.6s ease}}@media(max-width:420px){header{gap:6px}.gear,#nightToggle.gear{width:40px;height:40px}}@media(max-width:370px){.brand{font-size:16px;gap:8px;white-space:normal;line-height:1.05;max-width:7.5em}.brand img{width:32px;height:32px}}header{position:sticky;top:0;z-index:20;background:#fff6ef;box-shadow:0 0 0 100vmax #fff6ef;clip-path:inset(0 -100vmax)}.night header{background:#201e2b;box-shadow:0 0 0 100vmax #201e2b}@media(prefers-reduced-motion:no-preference){header{transition:background-color 1.25s ease,box-shadow 1.25s ease}}@media (orientation:landscape) and (max-height:520px){
+body{min-height:0;height:100vh;overflow:hidden}
+body:before{display:none}
+header{position:fixed;z-index:10;background:none;box-shadow:none;clip-path:none;top:max(10px,env(safe-area-inset-top,0px));right:max(14px,env(safe-area-inset-right,0px));left:auto;width:auto;margin:0;padding:0;border:0;gap:10px;flex-wrap:nowrap}
+header .brand{display:none}.night header,header{background:none;box-shadow:none;transition:none}
+.gear,#nightToggle.gear{width:40px;height:40px;background:#fff8f2cc;backdrop-filter:blur(6px);border-color:#ba938699}
+.night .gear,.night #nightToggle.gear{background:#2b2535cc}
+main{width:auto;margin:0;padding:0}
+main>h1,main>h1+p,footer{display:none}
+.scene{position:fixed;inset:0;height:100vh;max-height:none;margin:0;border-radius:0}
+.controls,.controls:has(.exercise-settings){position:fixed;z-index:6;right:max(18px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));margin:0;display:block;width:auto}
+.exercise-action{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.exercise-action #hint{margin:0;padding:5px 12px;border-radius:14px;font-size:13px;background:#fff8f2cc;color:#502f31;backdrop-filter:blur(6px)}
+.night .exercise-action #hint{background:#2b2535cc;color:#f4e7df}
+#toggle{min-height:46px;padding:11px 22px;box-shadow:0 6px 18px #3b1f2433}
+.phase-meter{left:max(14px,env(safe-area-inset-left,0px));right:auto;top:10px}
+.rabbit{left:34%;bottom:9%;scale:1}
+.night .rabbit{scale:.8}
+.burrow{left:34%;width:178px;height:158px}
+.speech{left:calc(34% + 92px);right:auto;max-width:290px;bottom:44%;width:auto;margin:0;padding:12px 16px}
+.speech h2{font-size:22px}.speech span{font-size:14px}
+.sun{left:9%;top:12%;width:110px}.moon{width:120px;right:auto;left:62%;top:8%}
+.hill{bottom:-60%}.far{bottom:-55%}
+}.flowers{position:absolute;inset:auto 0 0;height:52%;pointer-events:none}.fl{position:absolute;font-style:normal;line-height:1;opacity:.75;transform-origin:50% 80%}.fl.a{color:#fff6ec}.fl.b{color:#b9686a}.fl.c{color:#f7c9cf}.fl.d{color:#e8a07e}.night .fl.a{color:#cfc3d6}.night .fl.b{color:#8d6f88}.night .fl.c{color:#a98aa5}.night .fl.d{color:#9c7d8f}@media(prefers-reduced-motion:no-preference){.fl{animation:sway 4.5s ease-in-out var(--d) infinite alternate}@keyframes sway{from{rotate:-8deg}to{rotate:8deg}}}</style><header><strong class="brand"><img src="coelhinho.svg" alt="">Toca do Respiro</strong><button type="button" id="rainToggle" class="gear rain-btn" aria-pressed="false" aria-label="Ligar chuva"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 15.5h10.2a3.8 3.8 0 0 0 .4-7.6A5.6 5.6 0 0 0 6.9 9.2 3.2 3.2 0 0 0 7 15.5Z"/><path d="M8.5 18.2l-.8 2M12.3 18.2l-.8 2M16.1 18.2l-.8 2"/></svg></button><button type="button" id="nightToggle" class="gear" aria-pressed="false" aria-label="Modo noite"></button><button type="button" id="openSettings" class="gear" aria-label="Configurações" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg></button></header><main><h1>Respire com o coelhinho</h1><p>Um momento para respirar devagar, no seu tempo.</p><div class="scene"><i class="sun"></i><i class="moon" aria-hidden="true"></i><div class="clouds" aria-hidden="true"><span class="cloud-path"><i class="cloud"></i></span><span class="cloud-path"><i class="cloud"></i></span><span class="cloud-path"><i class="cloud"></i></span></div><i class="hill"></i><i class="hill far"></i><span aria-hidden="true" class="grass">〃 ✿ 〃</span><span aria-hidden="true" class="grass right">〃 ✿ 〃</span><div class="flowers" aria-hidden="true"><i class="fl a" style="left:6%;bottom:26%;font-size:12px;--d:0.00s">✿</i><i class="fl c" style="left:44%;bottom:8%;font-size:11px;--d:0.60s">✿</i><i class="fl b" style="left:62%;bottom:30%;font-size:10px;--d:1.20s">✿</i><i class="fl a" style="left:80%;bottom:14%;font-size:13px;--d:1.80s">✿</i><i class="fl c" style="left:94%;bottom:32%;font-size:10px;--d:2.40s">✿</i><i class="fl d" style="left:24%;bottom:4%;font-size:10px;--d:0.00s">✿</i></div><div class="burrow" aria-hidden="true"></div><i class="rain-tint" aria-hidden="true"></i><canvas class="rain-canvas" aria-hidden="true"></canvas><div class="rabbit awake" aria-hidden="true"><i class="ear"></i><i class="ear r"></i><i class="eye"></i><i class="eye r"></i><i class="cheek"></i><b class="nose">♥</b><i class="paw"></i><i class="paw r"></i><i class="mouth"></i><i class="puff"></i><i class="puff"></i><i class="puff"></i></div><div class="speech" aria-live="polite" aria-atomic="true"><h2 id="phase">Vamos respirar?</h2><span id="words">Eu acompanho você.</span></div><div class="phase-meter" hidden aria-hidden="true"><b id="beat">1</b> de <span id="beatLimit">5</span> s<progress id="beatBar" max="5" value="0"></progress></div><div class="countdown" role="status" aria-label="Contagem para começar" aria-atomic="true"></div></div><div class="controls"><div class="exercise-action"><p id="hint">Acomode-se e solte os ombros.</p><button id="toggle"><svg width="23" height="23" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M8 13C5 7 5 2 7 2s5 5 6 10h2c1-5 4-10 6-10s2 5-1 11c3 2 4 5 3 8-1 4-5 5-9 5s-8-1-9-5c-1-3 0-6 3-8Z"/></svg><span id="toggleLabel">Começar a respirar</span></button></div>
+</div></main><dialog id="settingsDialog" aria-labelledby="settingsTitle"><div class="dialog-head"><h2 id="settingsTitle">Configurações</h2><button type="button" id="closeSettings" class="dialog-close" aria-label="Fechar">✕</button></div><div id="settings"><label class="tick-setting"><input type="checkbox" id="tickSound" checked><span class="sound-pill"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h4l5-4v14l-5-4H3z"/><path class="waves" d="M16 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/><path class="muted" d="m16 9 6 6m0-6-6 6"/></svg>Som do ritmo<span aria-hidden="true" class="sound-state"></span></span></label>
+
+ <label for="pace">Tempo para inspirar e para expirar</label>
+ <input id="pace" type="range" min="3" max="15" step="1" value="5"><output id="paceValue" for="pace">5 segundos por fase</output>
+ <label for="rainVolume">Volume da chuva</label>
+ <input id="rainVolume" type="range" min="0" max="100" step="5" value="40">
+</div><button type="button" id="doneSettings" class="dialog-done">Pronto</button></dialog><footer><details id="ajuda"><summary>Sobre o ritmo</summary><p>O coelhinho dedica o mesmo tempo à inspiração e à expiração. Acompanhe até onde for confortável, sem forçar. Você pode parar quando quiser.</p><a target="_blank" rel="noopener" href="https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/breathing-exercises-for-stress/">Orientações de respiração do NHS</a></details></footer>
+<script>
+const rabbit=document.querySelector('.rabbit'), phase=document.querySelector('#phase'), hint=document.querySelector('#hint'), button=document.querySelector('#toggle');
+const toggleLabel = document.querySelector("#toggleLabel");
+const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+const pace = document.querySelector('#pace');
+const preferenceKey = 'toca.secondsPerPhase';
+try {
+ const saved = localStorage.getItem(preferenceKey);
+ const seconds = Number(saved);
+ if (Number.isInteger(seconds) && seconds >= Number(pace.min) && seconds <= Number(pace.max)) {
+  pace.value = String(seconds);
+ }
+} catch {}
+let phaseMs = Number(pace.value) * 1000;
+let start=null, frame;
+let countdownEnd = null;
+const scene = document.querySelector('.scene');
+const countdown = document.querySelector('.countdown');
+function hideCountdown() {
+ countdownEnd = null;
+ scene.classList.remove('preparing');
+ countdown.textContent = '';
+}
+function showPace() {
+ const label = pace.value + ' segundos por fase';
+ document.querySelector('#paceValue').value = label;
+ pace.setAttribute('aria-valuetext', label);
+}
+showPace();
+pace.oninput = () => {
+ showPace();
+ const nextMs = Number(pace.value) * 1000;
+ if (start !== null) {
+  const now = performance.now();
+  const cycleFraction = ((now - start) % (2 * phaseMs)) / (2 * phaseMs);
+  start = now - cycleFraction * 2 * nextMs;
+ }
+ phaseMs = nextMs;
+ try { localStorage.setItem(preferenceKey, pace.value); } catch {}
+};
+const words = document.querySelector('#words');
+const puffs = [...document.querySelectorAll('.puff')];
+let firstVisit = true;
+try { firstVisit = localStorage.getItem('toca.welcomed') !== 'true'; } catch {}
+if (firstVisit) {
+ phase.textContent = 'Olá...';
+ words.textContent = 'Que bom ter você aqui. Quando quiser, vamos respirar juntos.';
+ try { localStorage.setItem('toca.welcomed', 'true'); } catch {}
+}
+const phrases = {
+ inhale: ['No seu tempo.', 'Deixe o ar entrar de mansinho.', 'Uma respiração de cada vez.', 'Você está seguro aqui comigo.', 'Sinta a barriga crescer devagar.', 'Não precisa ser perfeito.', 'Este momento é só seu.', 'Estou bem aqui do seu lado.', 'Você está fazendo o seu melhor.', 'Devagarinho, sem pressa.'],
+ exhale: ['Pode soltar os ombros.', 'Deixe o ar sair devagar.', 'Você pode fazer uma pausa quando quiser.', 'Isso vai passar.', 'Solte o que estiver pesando.', 'Relaxe a testa e o queixo.', 'Cada respiração te acalma um pouco.', 'Você não está sozinho.', 'Está tudo bem sentir o que sente.', 'Você está indo muito bem.']
+};
+const meter = document.querySelector('.phase-meter');
+const beat = document.querySelector('#beat');
+const beatLimit = document.querySelector('#beatLimit');
+const beatBar = document.querySelector('#beatBar');
+const tickSound = document.querySelector('#tickSound');
+try { tickSound.checked = localStorage.getItem('toca.sound') !== 'off'; } catch {}
+let audio;
+function enableAudio() {
+ if (!tickSound.checked || !window.AudioContext) return;
+ try {
+  audio ??= new AudioContext();
+  if (audio.state !== 'running') audio.resume().catch(() => {});
+ } catch {}
+}
+tickSound.onchange = () => {
+ enableAudio();
+ try { localStorage.setItem('toca.sound', tickSound.checked ? 'on' : 'off'); } catch {}
+};
+function playTick(countdownSeconds = 0) {
+ if (!tickSound.checked || !audio) return;
+ const time = audio.currentTime;
+ const tone = audio.createOscillator();
+ const volume = audio.createGain();
+ const duration = countdownSeconds ? .28 : .055;
+ const pitch = countdownSeconds ? [0, 523.25, 440, 349.23][countdownSeconds] : 820;
+ tone.frequency.setValueAtTime(pitch, time);
+ if (!countdownSeconds) tone.frequency.exponentialRampToValueAtTime(540, time + .045);
+ volume.gain.setValueAtTime(.0001, time);
+ volume.gain.exponentialRampToValueAtTime(.075, time + (countdownSeconds ? .025 : .005));
+ volume.gain.exponentialRampToValueAtTime(.0001, time + duration);
+ tone.connect(volume);
+ volume.connect(audio.destination);
+ tone.onended = () => { tone.disconnect(); volume.disconnect(); };
+ tone.start(time);
+ tone.stop(time + duration + .005);
+}
+let lastSecond = -1;
+let cycle = 0;
+function tick(now){
+ if (countdownEnd !== null) {
+  const seconds = Math.ceil((countdownEnd - now) / 1000);
+  if (seconds > 0) {
+   const title = String(seconds);
+   if (countdown.textContent !== title) { countdown.textContent = title; playTick(seconds); }
+   frame = requestAnimationFrame(tick);
+   return;
+  }
+  hideCountdown();
+  start = now;
+  rabbit.classList.add('breathing');
+  toggleLabel.textContent = 'Parar exercício';
+ }
+ const elapsed=Math.max(0,now-start)%(2*phaseMs);
+ const inhale=elapsed<phaseMs;
+ const title=inhale?'Respire':'Expire';
+ if (phase.textContent !== title) {
+  if (inhale && phase.textContent === 'Expire') cycle++;
+  const lines = inhale ? phrases.inhale : phrases.exhale;
+  phase.textContent = title;
+  words.textContent = lines[cycle % lines.length];
+ }
+ const second = 1 + Math.floor(elapsed % phaseMs / 1000);
+ if (second !== lastSecond) {
+  lastSecond = second;
+  playTick();
+ }
+ const secondsPerPhase = phaseMs / 1000;
+ const instruction = (inhale ? 'Puxe o ar pelo nariz' : 'Solte o ar pela boca');
+ const accessibleHint = instruction + ' · ' + second + ' de ' + secondsPerPhase;
+ if (hint.textContent !== accessibleHint) hint.textContent = accessibleHint;
+ if (beat.textContent !== String(second)) beat.textContent = String(second);
+ if (beatLimit.textContent !== String(secondsPerPhase)) beatLimit.textContent = String(secondsPerPhase);
+ beatBar.max = secondsPerPhase;
+ beatBar.value = (elapsed % phaseMs) / 1000;
+ meter.hidden = false;
+ const expansion=(1-Math.cos(elapsed*Math.PI/phaseMs))/2;
+ rabbit.style.setProperty('--breath', reduced.matches ? 0 : expansion);
+ rabbit.style.transform=reduced.matches?'none':'scale('+ (1+0.1*expansion)+','+(1+0.15*expansion)+')';
+ const out = inhale ? 0 : (elapsed - phaseMs) / phaseMs;
+ rabbit.style.setProperty('--mouth', inhale ? 0 : Math.sin(Math.PI * Math.min(1, out * 1.15)));
+ puffs.forEach((p, i) => {
+  if (inhale || reduced.matches) { p.style.opacity = 0; return; }
+  const k = out * 1.25 - i * .22;
+  if (k <= 0 || k >= 1) { p.style.opacity = 0; return; }
+  p.style.opacity = (Math.sin(Math.PI * k) * .9).toFixed(3);
+  p.style.transform = 'translate(' + (-k * 95).toFixed(1) + 'px,' + (-k * 34 + Math.sin(k * 6) * 2).toFixed(1) + 'px) scale(' + (.35 + k * 1.1).toFixed(2) + ')';
+ });
+ frame=requestAnimationFrame(tick);
+}
+button.onclick=()=>{
+ if (start === null && countdownEnd === null) {
+  const now = performance.now();
+  enableAudio();
+  lastSecond = -1;
+  countdownEnd = now + 3000;
+  scene.classList.add('preparing');
+  cycle = 0;
+  words.textContent = 'Eu acompanho você.';
+  hint.textContent = 'Acomode-se e solte os ombros.';
+  toggleLabel.textContent = 'Cancelar';
+  tick(now);
+  return;
+ }
+ hideCountdown();
+ meter.hidden = true; cancelAnimationFrame(frame);rabbit.classList.add('awake');rabbit.classList.remove('breathing');rabbit.style.removeProperty('--mouth');puffs.forEach(p=>p.style.opacity=0);start=null;rabbit.style.removeProperty('--breath');words.textContent=['Estou aqui se quiser recomeçar.','Que bom que você tirou esse tempo.','Você cuidou de si agora. Isso importa.','Volte sempre que precisar.'][Math.floor(Math.random()*4)];rabbit.style.transform='none';phase.textContent='No seu tempo';hint.textContent='Volte a respirar naturalmente.';toggleLabel.textContent='Respirar de novo';
+};
+
+const nightToggle = document.querySelector('#nightToggle');
+function setNight(enabled) {
+ document.documentElement.classList.toggle('night', enabled);
+ nightToggle.setAttribute('aria-pressed', String(enabled));
+ nightToggle.innerHTML = enabled ? '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="currentColor"/><path d="M12 2v2.2M12 19.8V22M2 12h2.2M19.8 12H22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></svg>' : '<svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M20.5 14.3A8.5 8.5 0 0 1 9.7 3.5a8.5 8.5 0 1 0 10.8 10.8Z"/></svg>'; nightToggle.setAttribute('aria-label', enabled ? 'Voltar para o modo dia' : 'Ligar modo noite');
+}
+let night = false;
+try { night = localStorage.getItem('toca.night') === 'true'; } catch {}
+setNight(night);
+let modeAudio;
+function playModeChime(toNight) {
+ if (!window.AudioContext) return;
+ try {
+  modeAudio ??= new AudioContext();
+  if (modeAudio.state !== 'running') modeAudio.resume().catch(() => {});
+  const notes = toNight ? [659.25, 523.25, 392.0] : [523.25, 659.25, 783.99, 1046.5];
+  const step = toNight ? .2 : .11, length = toNight ? 1.1 : .7, peak = toNight ? .05 : .045;
+  const t0 = modeAudio.currentTime + .02;
+  notes.forEach((freq, i) => {
+   const t = t0 + i * step, osc = modeAudio.createOscillator(), gain = modeAudio.createGain();
+   osc.type = toNight ? 'sine' : 'triangle';
+   osc.frequency.setValueAtTime(freq, t);
+   gain.gain.setValueAtTime(.0001, t);
+   gain.gain.exponentialRampToValueAtTime(peak, t + .02);
+   gain.gain.exponentialRampToValueAtTime(.0001, t + length);
+   osc.connect(gain); gain.connect(modeAudio.destination);
+   osc.onended = () => { osc.disconnect(); gain.disconnect(); };
+   osc.start(t); osc.stop(t + length + .05);
+  });
+ } catch {}
+}
+nightToggle.onclick = () => {
+ night = !night;
+ setNight(night);
+ playModeChime(night);
+ try { localStorage.setItem('toca.night', String(night)); } catch {}
+};
+const rainToggle=document.querySelector('#rainToggle');
+const rainVolume=document.querySelector('#rainVolume');
+try{const v=Number(localStorage.getItem('toca.rainVolume'));if(localStorage.getItem('toca.rainVolume')!==null&&v>=0&&v<=100)rainVolume.value=String(v);}catch{}
+function rainLevel(){return Math.max(.0001,.2*Math.pow(Number(rainVolume.value)/100,1.6));}
+function showRainVolume(){rainVolume.setAttribute('aria-valuetext',rainVolume.value+'%');}
+showRainVolume();
+rainVolume.oninput=()=>{showRainVolume();try{localStorage.setItem('toca.rainVolume',rainVolume.value);}catch{}
+ if(rainSoundOn&&rainMaster){const t=rainAudio.currentTime;rainMaster.gain.cancelScheduledValues(t);rainMaster.gain.setTargetAtTime(rainLevel(),t,.08);}};
+const rainCanvas=document.querySelector('.rain-canvas');
+const rc=rainCanvas.getContext('2d');
+let raining=false,rainFrame=null,drops=[],rainAudio=null,rainMaster=null,rainTimer=null,rainSoundOn=false;
+function sizeRain(){const r=rainCanvas.getBoundingClientRect(),d=devicePixelRatio||1;rainCanvas.width=Math.max(1,r.width*d);rainCanvas.height=Math.max(1,r.height*d);rc.setTransform(d,0,0,d,0,0);}
+function newDrop(w,h,top){return{x:Math.random()*(w+40)-20,y:top?Math.random()*h:-20-Math.random()*h*.3,len:9+Math.random()*9,v:5.5+Math.random()*3.5,a:.25+Math.random()*.35};}
+function drawRain(){
+ const w=rainCanvas.clientWidth,h=rainCanvas.clientHeight,slow=reduced.matches?.25:1;
+ rc.clearRect(0,0,w,h);
+ const night=document.documentElement.classList.contains('night');
+ rc.lineCap='round';rc.lineWidth=1.3;
+ for(const d of drops){
+  d.y+=d.v*slow;d.x-=d.v*.18*slow;
+  if(d.y>h){Object.assign(d,newDrop(w,h,false));}
+  rc.strokeStyle=night?`rgba(205,214,240,${d.a})`:`rgba(255,255,255,${d.a+.15})`;
+  rc.beginPath();rc.moveTo(d.x,d.y);rc.lineTo(d.x+d.len*.18,d.y-d.len);rc.stroke();
+ }
+ rainFrame=requestAnimationFrame(drawRain);
+}
+function noiseBuffer(ctx,sec,brown){const n=ctx.sampleRate*sec,b=ctx.createBuffer(1,n,ctx.sampleRate),d=b.getChannelData(0);let last=0;for(let i=0;i<n;i++){const w=Math.random()*2-1;if(brown){last=(last+.02*w)/1.02;d[i]=last*3.5;}else d[i]=w;}return b;}
+function startRainSound(){
+ if(!window.AudioContext||rainSoundOn)return;
+ try{
+  rainAudio??=new AudioContext();
+  if(rainAudio.state!=='running')rainAudio.resume().catch(()=>{});
+  const ctx=rainAudio,t=ctx.currentTime;
+  rainMaster=ctx.createGain();rainMaster.gain.setValueAtTime(.0001,t);rainMaster.gain.exponentialRampToValueAtTime(rainLevel(),t+2.5);rainMaster.connect(ctx.destination);
+  const hiss=ctx.createBufferSource();hiss.buffer=noiseBuffer(ctx,3,false);hiss.loop=true;
+  const bp=ctx.createBiquadFilter();bp.type='bandpass';bp.frequency.value=2600;bp.Q.value=.45;
+  const lp=ctx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=6500;
+  const hg=ctx.createGain();hg.gain.value=.16;
+  hiss.connect(bp);bp.connect(lp);lp.connect(hg);hg.connect(rainMaster);
+  const low=ctx.createBufferSource();low.buffer=noiseBuffer(ctx,4,true);low.loop=true;
+  const llp=ctx.createBiquadFilter();llp.type='lowpass';llp.frequency.value=650;
+  const lg=ctx.createGain();lg.gain.value=.5;
+  low.connect(llp);llp.connect(lg);lg.connect(rainMaster);
+  const lfo=ctx.createOscillator(),lfoG=ctx.createGain();lfo.frequency.value=.13;lfoG.gain.value=.05;lfo.connect(lfoG);lfoG.connect(hg.gain);
+  hiss.start();low.start();lfo.start();
+  rainMaster._nodes=[hiss,low,lfo];
+  const dropBuf=noiseBuffer(ctx,.05,false);
+  rainTimer=setInterval(()=>{
+   const now=ctx.currentTime;
+   for(let k=0;k<3;k++){if(Math.random()<.55){
+    const s=ctx.createBufferSource();s.buffer=dropBuf;
+    const f=ctx.createBiquadFilter();f.type='bandpass';f.frequency.value=1800+Math.random()*3800;f.Q.value=4+Math.random()*6;
+    const g=ctx.createGain();const at=now+Math.random()*.12;g.gain.setValueAtTime(.0001,at);g.gain.exponentialRampToValueAtTime(.06+Math.random()*.12,at+.004);g.gain.exponentialRampToValueAtTime(.0001,at+.05);
+    s.connect(f);f.connect(g);g.connect(rainMaster);s.onended=()=>{s.disconnect();f.disconnect();g.disconnect();};s.start(at);s.stop(at+.06);
+   }}
+  },120);
+  rainSoundOn=true;
+ }catch{}
+}
+function stopRainSound(){
+ if(!rainSoundOn)return;rainSoundOn=false;clearInterval(rainTimer);
+ const m=rainMaster,t=rainAudio.currentTime;
+ try{m.gain.cancelScheduledValues(t);m.gain.setValueAtTime(Math.max(m.gain.value,.0001),t);m.gain.exponentialRampToValueAtTime(.0001,t+1.6);
+ setTimeout(()=>{m._nodes.forEach(n=>{try{n.stop()}catch{}});m.disconnect();},1800);}catch{}
+}
+function setRain(on,withSound){
+ raining=on;
+ document.documentElement.classList.toggle('raining',on);
+ rainToggle.setAttribute('aria-pressed',String(on));
+ rainToggle.setAttribute('aria-label',on?'Parar chuva':'Ligar chuva');
+ if(on){sizeRain();const w=rainCanvas.clientWidth,h=rainCanvas.clientHeight;drops=Array.from({length:Math.round(Math.max(40,w*h/2600))},()=>newDrop(w,h,true));if(!rainFrame)drawRain();if(withSound)startRainSound();}
+ else{stopRainSound();setTimeout(()=>{if(!raining){cancelAnimationFrame(rainFrame);rainFrame=null;rc.clearRect(0,0,rainCanvas.width,rainCanvas.height);}},1700);}
+}
+rainToggle.onclick=()=>{
+ const on=!raining;setRain(on,true);
+ try{localStorage.setItem('toca.rain',String(on));}catch{}
+ if(start===null&&countdownEnd===null){
+  if(on){phase.textContent='Chuvinha...';words.textContent='Escute a chuva caindo devagar.';}
+  else{phase.textContent='Vamos respirar?';words.textContent='Eu acompanho você.';}
+ }
+};
+addEventListener('resize',()=>{if(raining)sizeRain();});
+let savedRain=false;try{savedRain=localStorage.getItem('toca.rain')==='true';}catch{}
+if(savedRain){setRain(true,false);addEventListener('pointerdown',()=>{if(raining)startRainSound();},{once:true});}
+if (!reduced.matches) {
+ scene.classList.add('arriving');
+ document.documentElement.classList.add('opening');
+ const finishOpening = () => {
+  scene.classList.remove('arriving');
+  document.documentElement.classList.remove('opening');
+ };
+ setTimeout(finishOpening, 1300);
+ button.addEventListener('click', finishOpening, { once: true });
+}const settingsDialog=document.querySelector('#settingsDialog');document.querySelector('#openSettings').onclick=()=>settingsDialog.showModal();document.querySelector('#closeSettings').onclick=()=>settingsDialog.close();document.querySelector('#doneSettings').onclick=()=>settingsDialog.close();settingsDialog.addEventListener('click',e=>{if(e.target===settingsDialog)settingsDialog.close();});
+</script></html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

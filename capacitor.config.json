@@ -1,0 +1,8 @@
+{
+  "appId": "br.com.tocadorespiro.app",
+  "appName": "Toca do Respiro",
+  "webDir": "www",
+  "android": {
+    "backgroundColor": "#fff6ef"
+  }
+}
