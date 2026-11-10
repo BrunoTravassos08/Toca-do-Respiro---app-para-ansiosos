@@ -219,11 +219,12 @@ tickSound.onchange = () => {
 };
 function playTick(countdownSeconds = 0) {
  if (!tickSound.checked || !audio) return;
+ try {
  const time = audio.currentTime;
  const tone = audio.createOscillator();
  const volume = audio.createGain();
  const duration = countdownSeconds ? .28 : .055;
- const pitch = countdownSeconds ? [0, 523.25, 440, 349.23][countdownSeconds] : 820;
+ const pitch = countdownSeconds ? ([0, 523.25, 440, 349.23][countdownSeconds] || 523.25) : 820;
  tone.frequency.setValueAtTime(pitch, time);
  if (!countdownSeconds) tone.frequency.exponentialRampToValueAtTime(540, time + .045);
  volume.gain.setValueAtTime(.0001, time);
@@ -234,12 +235,13 @@ function playTick(countdownSeconds = 0) {
  tone.onended = () => { tone.disconnect(); volume.disconnect(); };
  tone.start(time);
  tone.stop(time + duration + .005);
+ } catch {}
 }
 let lastSecond = -1;
 let cycle = 0;
 function tick(now){
  if (countdownEnd !== null) {
-  const seconds = Math.ceil((countdownEnd - now) / 1000);
+  const seconds = Math.min(3, Math.ceil((countdownEnd - now) / 1000));
   if (seconds > 0) {
    const title = String(seconds);
    if (countdown.textContent !== title) { countdown.textContent = title; playTick(seconds); }
