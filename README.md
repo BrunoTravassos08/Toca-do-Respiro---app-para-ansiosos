@@ -18,8 +18,9 @@ App Android para respirar com calma junto com um coelhinho. Feito para quem conv
 ## Como o APK é gerado
 
 O app é a página `www/index.html` empacotada com [Capacitor](https://capacitorjs.com/).
-A cada envio para a branch `main`, o GitHub Actions (`.github/workflows/apk.yml`) gera o APK
-e publica uma nova versão em **Releases**. O link acima sempre aponta para a mais recente.
+O APK não é gerado automaticamente. Quando as alterações estiverem prontas e testadas,
+abra **Actions > Gerar APK > Run workflow** (branch `main`). O GitHub Actions
+(`.github/workflows/apk.yml`) gera o APK e publica uma nova versão em **Releases**. O link acima sempre aponta para a mais recente.
 
 Para que o Android aceite atualizações, o APK é assinado com a chave guardada nos segredos
 do repositório `KEYSTORE_BASE64` e `KEYSTORE_PASSWORD`. Sem eles, é gerado um APK de teste.
