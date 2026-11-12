@@ -12,6 +12,7 @@ App Android para respirar com calma junto com um coelhinho. Feito para quem conv
 - Modo noite, com o coelhinho na toca
 - Modo chuva, com som de chuva suave
 - Som do ritmo e tempo de cada fase ajustáveis
+- Sessões de 1 minuto, 3 minutos ou tempo livre
 - Tela deitada em tela cheia
 
 ## Como o APK é gerado
