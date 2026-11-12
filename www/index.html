@@ -143,9 +143,9 @@ main>h1,main>h1+p,footer{display:none}
 @media not all and (orientation:landscape) and (max-height:520px){
 header,.night header{position:fixed;top:auto;bottom:0;left:0;right:0;z-index:20;width:100%;margin:0;padding:8px max(16px,env(safe-area-inset-right,0px),calc(50% - 240px)) max(8px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px),calc(50% - 240px));border-bottom:0;border-top:1px solid #ebd5ce;clip-path:none;box-shadow:0 -6px 18px #502f3112;display:flex;flex-wrap:nowrap;justify-content:space-around;align-items:center;gap:6px}
 .night header{border-top-color:#514251;box-shadow:0 -6px 18px #0000002e}
-header .brand{flex:none;margin:0;font-size:0;gap:0;order:0;max-width:none}header .brand img{width:42px;height:42px}
+header .brand{flex:none;margin:0;font-size:0;gap:0;max-width:none}header .brand img{width:42px;height:42px}
 header .gear,header #nightToggle.gear{width:46px;height:46px}
-header .rain-btn{order:1}header #nightToggle.gear{order:2}header .quiet-btn{order:3}header #openSettings{order:4}
+header .rain-btn{order:0}header #nightToggle.gear{order:1}header .brand{order:2}header .quiet-btn{order:3}header #openSettings{order:4}
 body{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
 main{padding-top:max(18px,env(safe-area-inset-top,0px))}
 main>h1+p{margin:10px 0 0}.scene{margin:18px auto}
