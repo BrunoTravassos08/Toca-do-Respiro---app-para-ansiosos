@@ -1,8 +1,7 @@
 name: Gerar APK
 
+# Só roda quando alguém pede, em Actions > Gerar APK > Run workflow.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
