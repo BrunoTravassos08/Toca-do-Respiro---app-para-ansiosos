@@ -138,15 +138,15 @@ main>h1,main>h1+p,footer{display:none}
 .speech h2{font-size:22px}.speech span{font-size:14px}
 .sun{left:9%;top:12%;width:110px}.moon{width:120px;right:auto;left:62%;top:8%}
 .hill{bottom:-60%}.far{bottom:-55%}
-}#settingsDialog .duration{border:0;padding:0;margin:12px 0 0;min-width:0}#settingsDialog .duration legend{padding:0;margin-bottom:6px}.duration-options{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.duration-options label{position:relative;cursor:pointer}.duration-options input{position:absolute;width:1px;height:1px;opacity:0}.duration-options span{display:grid;place-items:center;min-height:44px;padding:4px 6px;text-align:center;line-height:1.15;font-size:14px;font-weight:600;border:1px solid #ba9386;border-radius:16px;background:#fff8f2;color:#704438}.duration-options input:checked+span{background:#f7dfd3;border-color:#984836;box-shadow:inset 0 0 0 1px #984836}.duration-options input:focus-visible+span{outline:3px solid currentColor;outline-offset:2px}.night .duration-options span{background:#39313f;color:#f7e7df;border-color:#957d87}.night .duration-options input:checked+span{background:#57404a;border-color:#e6b5a2;box-shadow:inset 0 0 0 1px #e6b5a2}.flowers{position:absolute;inset:auto 0 0;height:52%;pointer-events:none}.fl{position:absolute;font-style:normal;line-height:1;opacity:.75;transform-origin:50% 80%}.fl.a{color:#fff6ec}.fl.b{color:#b9686a}.fl.c{color:#f7c9cf}.fl.d{color:#e8a07e}.night .fl.a{color:#cfc3d6}.night .fl.b{color:#8d6f88}.night .fl.c{color:#a98aa5}.night .fl.d{color:#9c7d8f}@media(prefers-reduced-motion:no-preference){.fl{animation:sway 4.5s ease-in-out var(--d) infinite alternate}@keyframes sway{from{rotate:-8deg}to{rotate:8deg}}}</style><header><strong class="brand"><img src="coelhinho.svg" alt="">Toca do Respiro</strong><button type="button" id="rainToggle" class="gear rain-btn" aria-pressed="false" aria-label="Ligar chuva"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 15.5h10.2a3.8 3.8 0 0 0 .4-7.6A5.6 5.6 0 0 0 6.9 9.2 3.2 3.2 0 0 0 7 15.5Z"/><path d="M8.5 18.2l-.8 2M12.3 18.2l-.8 2M16.1 18.2l-.8 2"/></svg></button><button type="button" id="nightToggle" class="gear" aria-pressed="false" aria-label="Modo noite"></button><button type="button" id="openSettings" class="gear" aria-label="Configurações" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg></button></header><main><h1>Respire com o coelhinho</h1><p>Um momento para respirar devagar, no seu tempo.</p><div class="scene"><i class="sun"></i><i class="moon" aria-hidden="true"></i><div class="clouds" aria-hidden="true"><span class="cloud-path"><i class="cloud"></i></span><span class="cloud-path"><i class="cloud"></i></span><span class="cloud-path"><i class="cloud"></i></span></div><i class="hill"></i><i class="hill far"></i><span aria-hidden="true" class="grass">〃 ✿ 〃</span><span aria-hidden="true" class="grass right">〃 ✿ 〃</span><div class="flowers" aria-hidden="true"><i class="fl a" style="left:6%;bottom:26%;font-size:12px;--d:0.00s">✿</i><i class="fl c" style="left:44%;bottom:8%;font-size:11px;--d:0.60s">✿</i><i class="fl b" style="left:62%;bottom:30%;font-size:10px;--d:1.20s">✿</i><i class="fl a" style="left:80%;bottom:14%;font-size:13px;--d:1.80s">✿</i><i class="fl c" style="left:94%;bottom:32%;font-size:10px;--d:2.40s">✿</i><i class="fl d" style="left:24%;bottom:4%;font-size:10px;--d:0.00s">✿</i></div><div class="burrow" aria-hidden="true"></div><i class="rain-tint" aria-hidden="true"></i><canvas class="rain-canvas" aria-hidden="true"></canvas><div class="rabbit awake" aria-hidden="true"><i class="ear"></i><i class="ear r"></i><i class="eye"></i><i class="eye r"></i><i class="cheek"></i><b class="nose">♥</b><i class="paw"></i><i class="paw r"></i><i class="mouth"></i><i class="puff"></i><i class="puff"></i><i class="puff"></i></div><div class="speech" aria-live="polite" aria-atomic="true"><h2 id="phase">Vamos respirar?</h2><span id="words">Eu acompanho você.</span></div><div class="phase-meter" hidden aria-hidden="true"><b id="beat">1</b> de <span id="beatLimit">5</span> s<progress id="beatBar" max="5" value="0"></progress></div><div class="countdown" role="status" aria-label="Contagem para começar" aria-atomic="true"></div></div><div class="controls"><div class="exercise-action"><p id="hint">Acomode-se e solte os ombros.</p><button id="toggle"><svg width="23" height="23" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M8 13C5 7 5 2 7 2s5 5 6 10h2c1-5 4-10 6-10s2 5-1 11c3 2 4 5 3 8-1 4-5 5-9 5s-8-1-9-5c-1-3 0-6 3-8Z"/></svg><span id="toggleLabel">Começar a respirar</span></button></div>
-</div></main><dialog id="settingsDialog" aria-labelledby="settingsTitle"><div class="dialog-head"><h2 id="settingsTitle">Configurações</h2><button type="button" id="closeSettings" class="dialog-close" aria-label="Fechar">✕</button></div><div id="settings"><label class="tick-setting"><input type="checkbox" id="tickSound" checked><span class="sound-pill"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h4l5-4v14l-5-4H3z"/><path class="waves" d="M16 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/><path class="muted" d="m16 9 6 6m0-6-6 6"/></svg>Som do ritmo<span aria-hidden="true" class="sound-state"></span></span></label>
+}#settingsDialog .duration{border:0;padding:0;margin:12px 0 0;min-width:0}#settingsDialog .duration legend{padding:0;margin-bottom:6px}.duration-options{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.duration-options label{position:relative;cursor:pointer}.duration-options input{position:absolute;width:1px;height:1px;opacity:0}.duration-options span{display:grid;place-items:center;min-height:44px;padding:4px 6px;text-align:center;line-height:1.15;font-size:14px;font-weight:600;border:1px solid #ba9386;border-radius:16px;background:#fff8f2;color:#704438}.duration-options input:checked+span{background:#f7dfd3;border-color:#984836;box-shadow:inset 0 0 0 1px #984836}.duration-options input:focus-visible+span{outline:3px solid currentColor;outline-offset:2px}.night .duration-options span{background:#39313f;color:#f7e7df;border-color:#957d87}.night .duration-options input:checked+span{background:#57404a;border-color:#e6b5a2;box-shadow:inset 0 0 0 1px #e6b5a2}.flowers{position:absolute;inset:auto 0 0;height:52%;pointer-events:none}.fl{position:absolute;font-style:normal;line-height:1;opacity:.75;transform-origin:50% 80%}.fl.a{color:#fff6ec}.fl.b{color:#b9686a}.fl.c{color:#f7c9cf}.fl.d{color:#e8a07e}.night .fl.a{color:#cfc3d6}.night .fl.b{color:#8d6f88}.night .fl.c{color:#a98aa5}.night .fl.d{color:#9c7d8f}@media(prefers-reduced-motion:no-preference){.fl{animation:sway 4.5s ease-in-out var(--d) infinite alternate}@keyframes sway{from{rotate:-8deg}to{rotate:8deg}}}#settingsDialog .sound-options{border:0;padding:0;margin:4px 0 6px;min-width:0}#settingsDialog .sound-options legend{padding:0;margin-bottom:6px}.sound-toggles{display:grid;grid-template-columns:1fr 1fr;gap:8px}#settingsDialog .sound-toggles .tick-setting{margin:0;justify-self:stretch}.sound-toggles .sound-pill{width:100%;height:100%;padding:8px 12px;gap:8px;font-size:14px;line-height:1.2;border-radius:18px}.sound-toggles .sound-pill svg{flex:none}.pill-text{display:flex;flex-direction:column}.pill-text .sound-state{font-size:12px;opacity:.85}</style><header><strong class="brand"><img src="coelhinho.svg" alt="">Toca do Respiro</strong><button type="button" id="rainToggle" class="gear rain-btn" aria-pressed="false" aria-label="Ligar chuva"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 15.5h10.2a3.8 3.8 0 0 0 .4-7.6A5.6 5.6 0 0 0 6.9 9.2 3.2 3.2 0 0 0 7 15.5Z"/><path d="M8.5 18.2l-.8 2M12.3 18.2l-.8 2M16.1 18.2l-.8 2"/></svg></button><button type="button" id="nightToggle" class="gear" aria-pressed="false" aria-label="Modo noite"></button><button type="button" id="openSettings" class="gear" aria-label="Configurações" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg></button></header><main><h1>Respire com o coelhinho</h1><p>Um momento para respirar devagar, no seu tempo.</p><div class="scene"><i class="sun"></i><i class="moon" aria-hidden="true"></i><div class="clouds" aria-hidden="true"><span class="cloud-path"><i class="cloud"></i></span><span class="cloud-path"><i class="cloud"></i></span><span class="cloud-path"><i class="cloud"></i></span></div><i class="hill"></i><i class="hill far"></i><span aria-hidden="true" class="grass">〃 ✿ 〃</span><span aria-hidden="true" class="grass right">〃 ✿ 〃</span><div class="flowers" aria-hidden="true"><i class="fl a" style="left:6%;bottom:26%;font-size:12px;--d:0.00s">✿</i><i class="fl c" style="left:44%;bottom:8%;font-size:11px;--d:0.60s">✿</i><i class="fl b" style="left:62%;bottom:30%;font-size:10px;--d:1.20s">✿</i><i class="fl a" style="left:80%;bottom:14%;font-size:13px;--d:1.80s">✿</i><i class="fl c" style="left:94%;bottom:32%;font-size:10px;--d:2.40s">✿</i><i class="fl d" style="left:24%;bottom:4%;font-size:10px;--d:0.00s">✿</i></div><div class="burrow" aria-hidden="true"></div><i class="rain-tint" aria-hidden="true"></i><canvas class="rain-canvas" aria-hidden="true"></canvas><div class="rabbit awake" aria-hidden="true"><i class="ear"></i><i class="ear r"></i><i class="eye"></i><i class="eye r"></i><i class="cheek"></i><b class="nose">♥</b><i class="paw"></i><i class="paw r"></i><i class="mouth"></i><i class="puff"></i><i class="puff"></i><i class="puff"></i></div><div class="speech" aria-live="polite" aria-atomic="true"><h2 id="phase">Vamos respirar?</h2><span id="words">Eu acompanho você.</span></div><div class="phase-meter" hidden aria-hidden="true"><b id="beat">1</b> de <span id="beatLimit">5</span> s<progress id="beatBar" max="5" value="0"></progress></div><div class="countdown" role="status" aria-label="Contagem para começar" aria-atomic="true"></div></div><div class="controls"><div class="exercise-action"><p id="hint">Acomode-se e solte os ombros.</p><button id="toggle"><svg width="23" height="23" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M8 13C5 7 5 2 7 2s5 5 6 10h2c1-5 4-10 6-10s2 5-1 11c3 2 4 5 3 8-1 4-5 5-9 5s-8-1-9-5c-1-3 0-6 3-8Z"/></svg><span id="toggleLabel">Começar a respirar</span></button></div>
+</div></main><dialog id="settingsDialog" aria-labelledby="settingsTitle"><div class="dialog-head"><h2 id="settingsTitle">Configurações</h2><button type="button" id="closeSettings" class="dialog-close" aria-label="Fechar">✕</button></div><div id="settings"><fieldset class="sound-options"><legend>Sons</legend><div class="sound-toggles"><label class="tick-setting"><input type="checkbox" id="phaseSound" checked><span class="sound-pill"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h4l5-4v14l-5-4H3z"/><path class="waves" d="M16 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/><path class="muted" d="m16 9 6 6m0-6-6 6"/></svg><span class="pill-text">Inspirar e expirar<span aria-hidden="true" class="sound-state"></span></span></span></label><label class="tick-setting"><input type="checkbox" id="tickSound" checked><span class="sound-pill"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h4l5-4v14l-5-4H3z"/><path class="waves" d="M16 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/><path class="muted" d="m16 9 6 6m0-6-6 6"/></svg><span class="pill-text">Tic por segundo<span aria-hidden="true" class="sound-state"></span></span></span></label></div></fieldset>
 
  <label for="pace">Tempo para inspirar e para expirar</label>
  <input id="pace" type="range" min="3" max="15" step="1" value="5"><output id="paceValue" for="pace">5 segundos por fase</output>
  <fieldset class="duration"><legend>Duração da sessão</legend><div class="duration-options"><label><input type="radio" name="duration" value="1"><span>1 minuto</span></label><label><input type="radio" name="duration" value="3"><span>3 minutos</span></label><label><input type="radio" name="duration" value="0" checked><span>Tempo livre</span></label></div></fieldset>
  <label for="rainVolume">Volume da chuva</label>
  <input id="rainVolume" type="range" min="0" max="100" step="5" value="40">
-</div><button type="button" id="doneSettings" class="dialog-done">Pronto</button></dialog><footer><details id="ajuda"><summary>Sobre o ritmo</summary><p>O coelhinho dedica o mesmo tempo à inspiração e à expiração. Acompanhe até onde for confortável, sem forçar. Você pode parar quando quiser.</p><a target="_blank" rel="noopener" href="https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/breathing-exercises-for-stress/">Orientações de respiração do NHS</a></details></footer>
+</div><button type="button" id="doneSettings" class="dialog-done">Pronto</button></dialog><footer><details id="ajuda"><summary>Sobre o ritmo</summary><p>O coelhinho dedica o mesmo tempo à inspiração e à expiração. Acompanhe até onde for confortável, sem forçar. Você pode parar quando quiser.</p><p>Para respirar de olhos fechados, dois sons suaves marcam as mudanças de fase: um tom que sobe para inspirar e outro que desce para expirar. O tic por segundo pode ser desligado separadamente em Configurações.</p><a target="_blank" rel="noopener" href="https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/breathing-exercises-for-stress/">Orientações de respiração do NHS</a></details></footer>
 <script>
 const rabbit=document.querySelector('.rabbit'), phase=document.querySelector('#phase'), hint=document.querySelector('#hint'), button=document.querySelector('#toggle');
 const toggleLabel = document.querySelector("#toggleLabel");
@@ -205,10 +205,13 @@ const beat = document.querySelector('#beat');
 const beatLimit = document.querySelector('#beatLimit');
 const beatBar = document.querySelector('#beatBar');
 const tickSound = document.querySelector('#tickSound');
+const phaseSound = document.querySelector('#phaseSound');
 try { tickSound.checked = localStorage.getItem('toca.sound') !== 'off'; } catch {}
+try { phaseSound.checked = localStorage.getItem('toca.phaseSound') !== 'off'; } catch {}
 let audio;
+function anySound() { return tickSound.checked || phaseSound.checked; }
 function enableAudio() {
- if (!tickSound.checked || !window.AudioContext) return;
+ if (!anySound() || !window.AudioContext) return;
  try {
   audio ??= new AudioContext();
   if (audio.state !== 'running') audio.resume().catch(() => {});
@@ -218,8 +221,33 @@ tickSound.onchange = () => {
  enableAudio();
  try { localStorage.setItem('toca.sound', tickSound.checked ? 'on' : 'off'); } catch {}
 };
+phaseSound.onchange = () => {
+ enableAudio();
+ try { localStorage.setItem('toca.phaseSound', phaseSound.checked ? 'on' : 'off'); } catch {}
+};
+// Tom suave que sobe (inspirar) ou desce (expirar), para acompanhar de olhos fechados.
+function playPhaseTone(rising) {
+ if (!phaseSound.checked || !audio) return;
+ try {
+  const t = audio.currentTime + .01, low = 293.66, high = 440, glide = .75, end = 1.15;
+  [1, 2].forEach((harmonic, i) => {
+   const osc = audio.createOscillator(), gain = audio.createGain();
+   osc.type = 'sine';
+   osc.frequency.setValueAtTime((rising ? low : high) * harmonic, t);
+   osc.frequency.exponentialRampToValueAtTime((rising ? high : low) * harmonic, t + glide);
+   const peak = i ? .012 : .06;
+   gain.gain.setValueAtTime(.0001, t);
+   gain.gain.exponentialRampToValueAtTime(peak, t + .12);
+   gain.gain.setValueAtTime(peak, t + glide - .15);
+   gain.gain.exponentialRampToValueAtTime(.0001, t + end);
+   osc.connect(gain); gain.connect(audio.destination);
+   osc.onended = () => { osc.disconnect(); gain.disconnect(); };
+   osc.start(t); osc.stop(t + end + .02);
+  });
+ } catch {}
+}
 function playTick(countdownSeconds = 0) {
- if (!tickSound.checked || !audio) return;
+ if (!audio || !(countdownSeconds ? anySound() : tickSound.checked)) return;
  try {
  const time = audio.currentTime;
  const tone = audio.createOscillator();
@@ -252,7 +280,7 @@ function chosenMinutes() {
 }
 let sessionMs = 0, finishing = false;
 function playEndChime() {
- if (!tickSound.checked || !audio) return;
+ if (!anySound() || !audio) return;
  try {
   const t0 = audio.currentTime + .05;
   [523.25, 659.25, 783.99].forEach((freq, i) => {
@@ -268,7 +296,7 @@ function playEndChime() {
   });
  } catch {}
 }
-let lastSecond = -1;
+let lastSecond = -1, phaseToned = false;
 let cycle = 0;
 function tick(now){
  if (countdownEnd !== null) {
@@ -297,12 +325,16 @@ function tick(now){
   const lines = inhale ? phrases.inhale : phrases.exhale;
   phase.textContent = title;
   words.textContent = lines[cycle % lines.length];
+  playPhaseTone(inhale);
+  phaseToned = true;
  }
  const second = 1 + Math.floor(elapsed % phaseMs / 1000);
  if (second !== lastSecond) {
   lastSecond = second;
-  playTick();
+  // Na virada de fase o tom de inspirar/expirar substitui o tic.
+  if (!(phaseToned && phaseSound.checked)) playTick();
  }
+ phaseToned = false;
  const secondsPerPhase = phaseMs / 1000;
  const instruction = (inhale ? 'Puxe o ar pelo nariz' : 'Solte o ar pela boca');
  const accessibleHint = instruction + ' · ' + second + ' de ' + secondsPerPhase;
